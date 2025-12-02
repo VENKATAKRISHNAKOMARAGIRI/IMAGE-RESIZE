@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pro Image Resizer — HD • Ratios • Pixels • CM/M</title>
+  <link rel="stylesheet" href="./css.css">
+</head>
+<body>
+  <div class="app">
+    <header class="top">
+      <div class="brand">
+        <h1>Pro Image Resizer</h1>
+        <p class="tag">HD • No Crop by default • Ratios • Pixels • CM / Meters</p>
+      </div>
+      <div class="actions-top">
+        <button id="openCameraBtn" class="btn btn-ghost">Open Camera</button>
+        <input id="fileInput" type="file" accept="image/*" class="file-input">
+        <label for="fileInput" class="btn">Upload Image</label>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="left panel">
+        <div class="card">
+          <h3>Preview</h3>
+          <div class="preview">
+            <video id="cameraVideo" autoplay playsinline class="hidden"></video>
+            <img id="previewImg" alt="preview" class="preview-img hidden">
+            <div id="previewPlaceholder" class="placeholder">
+              <svg width="56" height="56" viewBox="0 0 24 24" fill="none"><path d="M12 5v14" stroke="#9fb6d9" stroke-width="1.6" stroke-linecap="round"/></svg>
+              <div class="placeholder-text">Upload or open camera</div>
+            </div>
+          </div>
+
+          <div class="control-row">
+            <button id="captureBtn" class="btn btn-primary" disabled>Capture</button>
+            <button id="stopCameraBtn" class="btn btn-ghost" disabled>Stop</button>
+            <button id="resetBtn" class="btn btn-outline">Reset</button>
+          </div>
+
+          <div class="hint">Tip: Click the preview to capture from camera (when active). Drag & drop supported.</div>
+        </div>
+
+        <div class="card">
+          <h3>Size / Units</h3>
+
+          <div class="field">
+            <label>Preset</label>
+            <div class="presets">
+              <button class="preset" data-w="1920" data-h="1080">16:9</button>
+              <button class="preset" data-w="1080" data-h="1920">9:16</button>
+              <button class="preset" data-w="1200" data-h="1200">1:1</button>
+              <button class="preset" data-w="800" data-h="1000">4:5</button>
+              <button class="preset" data-type="A4" data-wcm="21" data-hcm="29.7">A4</button>
+              <button id="customPreset" class="preset">Custom</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Units</label>
+            <select id="unitSelect">
+              <option value="ratio">Ratio</option>
+              <option value="px">Pixels</option>
+              <option value="cm">Centimeters</option>
+              <option value="m">Meters</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Width</label>
+            <input id="inputA" type="number" placeholder="Width" min="0" step="any">
+            <label>Height</label>
+            <input id="inputB" type="number" placeholder="Height" min="0" step="any">
+          </div>
+
+          <div class="field">
+            <label>DPI (for cm/m)</label>
+            <input id="dpi" type="number" value="300" min="72" step="1">
+            <label>Background</label>
+            <input id="bgColor" type="color" value="#ffffff">
+          </div>
+
+          <div class="field">
+            <label>Scale Mode</label>
+            <select id="modeSelect">
+              <option value="contain">Contain (no crop)</option>
+              <option value="cover">Fill (may crop)</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Output Format</label>
+            <select id="formatSelect">
+              <option value="png">PNG (lossless)</option>
+              <option value="jpeg">JPEG (lossy)</option>
+            </select>
+            <label>JPEG Quality</label>
+            <input id="jpegQuality" type="number" step="0.01" min="0.2" max="1" value="0.92">
+          </div>
+
+          <div class="control-row">
+            <button id="generateBtn" class="btn btn-primary">Generate Preview</button>
+            <button id="downloadBtn" class="btn btn-success" disabled>Download</button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="right panel">
+        <div class="card">
+          <h3>Result Preview</h3>
+          <div class="canvas-wrap">
+            <canvas id="resultCanvas"></canvas>
+          </div>
+
+          <div class="meta">
+            <div id="resultInfo" class="muted">No result yet</div>
+          </div>
+
+          <div class="control-row">
+            <button id="downloadCanvasBtn" class="btn btn-success" disabled>Download File</button>
+            <button id="saveGalleryBtn" class="btn btn-ghost" disabled>Save to Gallery</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Gallery</h3>
+          <div id="gallery" class="gallery"></div>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="foot">
+      <div class="muted">High quality export rendered using DPI & devicePixelRatio. For print use 300 DPI or higher.</div>
+    </footer>
+  </div>
+
+  <script src="./js.js"></script>
+</body>
+</html>

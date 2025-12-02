@@ -1,0 +1,245 @@
+/* style.css — modern polished UI */
+:root {
+    --bg1: #071427;
+    --bg2: #0c2540;
+    --card: rgba(255, 255, 255, 0.04);
+    --muted: #9fb6d9;
+    --accent1: #6dd3ff;
+    --accent2: #8c6dff;
+    --success: #00d18e;
+    --radius: 12px;
+}
+
+* {
+    box-sizing: border-box
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: Inter, system-ui, Segoe UI, Arial;
+    color: #eaf4ff;
+    background: linear-gradient(180deg, var(--bg1), var(--bg2));
+    -webkit-font-smoothing: antialiased
+}
+
+.app {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 18px
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+.brand h1 {
+    margin: 0;
+    font-size: 20px
+}
+
+.tag {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px
+}
+
+.file-input {
+    display: none
+}
+
+.btn {
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 0;
+    cursor: pointer;
+    background: linear-gradient(90deg, var(--accent1), var(--accent2));
+    color: #021126;
+    font-weight: 700
+}
+
+.btn-ghost {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    color: var(--muted)
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px dashed rgba(255, 255, 255, 0.06);
+    color: var(--muted)
+}
+
+.btn-success {
+    background: linear-gradient(90deg, #00ffb3, var(--success));
+    color: #012;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 18px;
+    margin-top: 18px
+}
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    gap: 12px
+}
+
+.card {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+    border-radius: var(--radius);
+    padding: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    box-shadow: 0 10px 30px rgba(2, 6, 23, 0.45)
+}
+
+.preview {
+    height: 340px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #071425;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.02)
+}
+
+.placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    color: var(--muted)
+}
+
+.placeholder-text {
+    font-size: 14px
+}
+
+.preview-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain
+}
+
+.hidden {
+    display: none
+}
+
+.control-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-top: 8px
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px
+}
+
+.presets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px
+}
+
+.preset {
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer
+}
+
+.preset.active {
+    background: linear-gradient(90deg, #21324a, #132636);
+    color: #ffffff34;
+    border-color: rgba(120, 180, 255, 0.08)
+}
+
+.inputRow {
+    display: flex;
+    gap: 8px;
+    align-items: center
+}
+
+.inputRow input[type="number"],
+select,
+input[type="color"] {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    background: transparent;
+    color: inherit
+}
+
+.canvas-wrap {
+    height: 420px;
+    border-radius: 10px;
+    overflow: auto;
+    background: rgba(255, 255, 255, 0.02);
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+canvas {
+    background: #0b1220;
+    border-radius: 8px;
+    max-width: 100%
+}
+
+.muted {
+    color: var(--muted);
+    font-size: 13px
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    max-height: 220px;
+    overflow: auto;
+    padding-top: 8px
+}
+
+.gallery img {
+    width: 88px;
+    height: 88px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    cursor: pointer
+}
+
+.foot {
+    margin-top: 12px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px
+}
+
+@media (max-width:1000px) {
+    .layout {
+        grid-template-columns: 1fr
+    }
+
+    .preview {
+        height: 260px
+    }
+
+    .canvas-wrap {
+        height: 300px
+    }
+}
